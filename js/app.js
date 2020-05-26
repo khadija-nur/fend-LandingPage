@@ -55,3 +55,18 @@
 // Set sections as active
 
 
+const navbarList = document.getElementById("navbar__list");
+const sections = (document.querySelectorAll("section"));
+let navlink;
+for (var i = 1; i<=sections.length; i++){
+    navlink= document.createElement("li");
+    const a = document.createElement("a");
+    const navlinkText = "section "+i;
+    a.append(navlinkText)
+    a.setAttribute("href", `#${"section"+i}`);
+    navlink.append(a);
+    navbarList.append(navlink);
+    navlink.classList.add("menu__link")
+}
+
+navlink.classList.add("menu__link")
