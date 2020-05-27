@@ -50,11 +50,11 @@
 
 // Build menu 
 
-// Scroll to section on link click
+// Scroll to section onnavlinknk click
 
 // Set sections as active
 
-
+// add navbar dynamically
 const navbarList = document.getElementById("navbar__list");
 const sections = (document.querySelectorAll("section"));
 let navlink;
@@ -70,3 +70,30 @@ for (var i = 1; i<=sections.length; i++){
 }
 
 navlink.classList.add("menu__link")
+
+
+// use intersection observer to add active-class to sections when they are in view 
+const options = {
+    threshold :0,
+    rootMargin : "0px" 
+}
+
+const observer = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+        
+        if (!entry.isIntersecting){
+            entry.target.classList.remove("your-active-class");
+        }
+        else{
+            entry.target.classList.add("your-active-class");
+        }
+    })
+}, options);
+
+
+sections.forEach(section => {
+   observer.observe(section)
+})
+
+
+
