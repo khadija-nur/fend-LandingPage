@@ -75,44 +75,31 @@ navlink.classList.add("menu__link")
 
 
 // use intersection observer to add active-class to sections when they are in view 
-// const options = {
-//     threshold :0,
-//     rootMargin : "100px" 
-// }
 
-// const observer = new IntersectionObserver(function(entries, observer){
-//     entries.forEach(entry => {
-        
-//         if (entry.isIntersecting){
-//             entry.target.classList.add("observer");
-//         }
-//         else{
-//             entry.target.classList.remove("observer");
-//         }
-//     })
-// }, options);
+(function active_nav (){
+    let mainNavLinks = Array.from(document.querySelectorAll("nav ul li a"));
 
+    window.addEventListener("scroll", event =>{
+    // find the distance of the scroll bar from top of page 
+    
+    let fromTop = window.scrollY;
 
-// sections.forEach(section => {
-//    observer.observe(section)
-// })
-
-const observer = new IntersectionObserver(function(entries, observer){
-    entries.forEach(entry => {
-        
-        if (!entry.isIntersecting){
-            entry.target.classList.remove("your-active-class");
+    mainNavLinks.forEach(link => {
+        // let section = Array.from(document.querySelectorAll("section"))
+        let section = document.querySelector(link.hash);
+        console.log(link)
+        console.log("fromtop = " + fromTop)
+        console.log("section.offsetTop = " + section.offsetTop);
+        console.log("section.offsetTop  + section.offsettHeight = " + (section.offsetTop  + section.offsetHeight));
+        if(section.offsetTop <= fromTop && (section.offsetTop + section.offsetHeight) > fromTop){
+            link.classList.add("your-active-class");
         }
         else{
-            entry.target.classList.add("your-active-class");
+            link.classList.remove("your-active-class");
         }
-    })
-}, options);
-
-
-sections.forEach(section => {
-   observer.observe(section)
+    });
 })
+})();
 
 
 
