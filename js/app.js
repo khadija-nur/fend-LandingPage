@@ -75,10 +75,27 @@ navlink.classList.add("menu__link")
 
 
 // use intersection observer to add active-class to sections when they are in view 
-const options = {
-    threshold :0,
-    rootMargin : "0px" 
-}
+// const options = {
+//     threshold :0,
+//     rootMargin : "100px" 
+// }
+
+// const observer = new IntersectionObserver(function(entries, observer){
+//     entries.forEach(entry => {
+        
+//         if (entry.isIntersecting){
+//             entry.target.classList.add("observer");
+//         }
+//         else{
+//             entry.target.classList.remove("observer");
+//         }
+//     })
+// }, options);
+
+
+// sections.forEach(section => {
+//    observer.observe(section)
+// })
 
 const observer = new IntersectionObserver(function(entries, observer){
     entries.forEach(entry => {
